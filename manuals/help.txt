@@ -1,0 +1,10 @@
+name
+
+NAME:
+    name - short description
+
+SYNOPSIS:
+    name <args>
+
+DESCRIPTION:
+    full description

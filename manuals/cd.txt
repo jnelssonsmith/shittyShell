@@ -1,0 +1,11 @@
+cd
+
+NAME:
+    cd - change the directory the user is currently ind
+
+SYNOPSIS:
+    cd <OPTIONAL: directory>
+
+DESCRIPTION:
+    cd will change into the directory given by <directory>, if no argument is given
+    it will change into the root directory of the system

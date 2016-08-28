@@ -1,0 +1,24 @@
+DONE:
+- quit command
+- clear command
+- dir <directory>
+- pause
+- echo <comment>
+- cd <dir>
+-----------------------
+IN PROGRESS:
+- help
+- find
+
+-----------------------
+BACKLOG:
+
+-----------------------
+THINK ABOUT:
+- how to handle arguments
+- probs have to use something like strsep
+- and/or could refer to a preset table of valid commands?
+- !The string echo "hello \" does not behave as expected
+- need to clean up code
+- need to make test case group
+- probs best just to use regular expressions to ensure correctness?

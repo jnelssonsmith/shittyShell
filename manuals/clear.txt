@@ -1,0 +1,10 @@
+clear
+
+NAME:
+    clear - clear the output screen
+
+SYNOPSIS:
+    clear [NO ARGS]
+
+DESCRIPTION:
+    clear will clear the terminal window of all recent prompts

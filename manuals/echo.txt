@@ -1,0 +1,11 @@
+echo
+
+NAME:
+    echo - print out a message to terminal
+
+SYNOPSIS:
+    echo <comment>
+
+DESCRIPTION:
+    cd will change into the directory given by <directory>, if no argument is given
+    it will change into the root directory of the system
