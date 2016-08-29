@@ -1,10 +1,10 @@
-name
+run
 
 NAME:
-    name - short description
+    run - execute an executable program
 
 SYNOPSIS:
-    name <args>
+    run <program>
 
 DESCRIPTION:
-    full description
+    run executable program with name 

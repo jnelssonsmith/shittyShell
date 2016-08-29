@@ -2,9 +2,12 @@
 NAME: Joshua Nelsson-Smith
 STUDENT ID: 25954113
 START DATE: 23/08/16
-LAST MODIFIED: 28/08/16
+LAST MODIFIED: 29/08/16
 DESCRIPTION: This program serves as a very basic command line interpreter
 ...
+
+general structure should be:
+main clarifies the functions are being passed valid data,
 */
 
 #include <stdio.h>
@@ -30,9 +33,20 @@ int main(void){
 	int retiEcho;
 	int retiOneArg;
 	int retiTwoArg;
-	int cdresult;
+	void echo();
+	void cd();
+	void quit();
+	void clear();
+	void pauseCLI();
+	void dir();
+	void help();
+	void new();
+	void cpCLI();
+	void find();
+	void run();
+	void halt();
 
-	retiEcho = regcomp(&echoRegex, "\"((\"*)(.*)(\"*))*\"", REG_EXTENDED);
+	retiEcho = regcomp(&echoRegex, "^\"((\"*)(.*)(\"*))*\"$", REG_EXTENDED);
 	retiTwoArg = regcomp(&twoArgRegex, "^[^ ]+ [^ ]+$", REG_EXTENDED);
 	if (retiEcho) {
     	fprintf(stderr, "Could not compile regex\n");
@@ -71,24 +85,20 @@ int main(void){
 		//printf("Arg: %s\n", arg);
 
 		if(strcmp(cmd, "quit") == 0){ //cmd is stored with newline included
-
-			exit(0);
+			quit();
 
 		} else if (strcmp(cmd, "clear") == 0){
-
-			system("clear");
+			clear();
 
 		} else if (strcmp(cmd, "pause") == 0){
-
-			printf("Press enter to continue...");
-			fgets(input, 256, stdin);
+			pauseCLI(input); //have to use pauseCLI as method name since pause is taken
+			//printf("Press enter to continue...");
+			//fgets(input, 256, stdin);
 
 		} else if (strcmp(cmd, "echo") == 0){
 			retiEcho = regexec(&echoRegex, arg, 0, NULL, 0);
 			if(!retiEcho){
-				strcpy(cmdarg, "echo ");
-				strcat(cmdarg, arg);
-				system(cmdarg);
+				echo(arg);
 			} else {
 				printf("Invalid argument, please close double quotes \nand use escape quotes or single quotes if need be\n");
 			}
@@ -96,40 +106,24 @@ int main(void){
 
 
 		} else if (strcmp(cmd, "dir") == 0) {
-			strcpy(cmdarg, "ls ");
-			strcat(cmdarg, arg);
-			system(cmdarg);
+			dir(arg);
 
 		} else if (strcmp(cmd, "cd") == 0) {
+			cd(arg);
 
-			cdresult = chdir(arg);
-			if(!cdresult){
-				//printf("change successful\n");
-			} else {
-				if(ENOTDIR){
-					printf("Invalid path or directory\n");
-				}
-			}
 
 		} else if (strcmp(cmd, "help") == 0){
 			//need to also have null argument show entire user manual
-			strcpy(cmdarg, "more manuals/");
-			strcat(cmdarg, arg);
-			strcat(cmdarg, ".txt");
-			system(cmdarg);
+			help(arg);
 
 		} else if (strcmp(cmd, "new") == 0){
-			strcpy(cmdarg, "touch ");
-			strcat(cmdarg, arg);
-			system(cmdarg);
+			new(arg);
 
 		} else if (strcmp(cmd, "cp") == 0){
 			retiTwoArg = regexec(&twoArgRegex, arg, 0, NULL, 0);
 			if(!retiTwoArg){
 				//printf("Arg [%s] matched\n", arg);
-				strcpy(cmdarg, "cp ");
-				strcat(cmdarg, arg);
-				system(cmdarg);
+				cpCLI(arg);
 			} else {
 				printf("Arg [%s] did not match\n", arg);
 			}
@@ -138,24 +132,17 @@ int main(void){
 			retiTwoArg = regexec(&twoArgRegex, arg, 0, NULL, 0);
 			if(!retiTwoArg){
 				//printf("Arg [%s] matched\n", arg);
-				strcpy(cmdarg, "fgrep -o ");
-				strcat(cmdarg, arg);
-				strcat(cmdarg, " | wc -l");
-				system(cmdarg);
+				find(arg);
 
 			} else {
 				printf("Arg [%s] did not match\n", arg);
 			}
 
 		} else if (strcmp(cmd, "run") == 0){
-			strcpy(cmdarg, "./");
-			strcat(cmdarg, arg);
-			system(cmdarg);
+			run(arg);
 
 		} else if (strcmp(cmd, "halt") == 0){
-			strcpy(cmdarg, "pkill ");
-			strcat(cmdarg, arg);
-			system(cmdarg);
+			halt(arg);
 
 		} else {
 
@@ -166,4 +153,91 @@ int main(void){
     return 0; //never actually going to reach so idunno if needed...
 
 
+}
+
+void echo(char arg[256]){
+	char cmdarg[300];
+	strcpy(cmdarg, "echo ");
+	strcat(cmdarg, arg);
+	system(cmdarg);
+
+}
+
+void cd(char arg[256]){
+	int cdresult;
+
+	cdresult = chdir(arg);
+	if(!cdresult){
+		//printf("change successful\n");
+	} else {
+		if(ENOTDIR){
+			printf("Invalid path or directory\n");
+		}
+	}
+}
+
+void quit(void){
+	exit(0);
+}
+
+void clear(void){
+	system("clear");
+}
+
+void pauseCLI(char input[256]){
+	printf("Press enter to continue...");
+	fgets(input, 256, stdin);
+}
+
+void dir(char arg[256]){
+	char cmdarg[300];
+	strcpy(cmdarg, "ls ");
+	strcat(cmdarg, arg);
+	system(cmdarg);
+
+}
+
+void help(char arg[256]){
+	char cmdarg[300];
+	strcpy(cmdarg, "more manuals/");
+	strcat(cmdarg, arg);
+	strcat(cmdarg, ".txt");
+	system(cmdarg);
+}
+
+void new(char arg[256]){
+	char cmdarg[300];
+	strcpy(cmdarg, "touch ");
+	strcat(cmdarg, arg);
+	system(cmdarg);
+}
+
+
+void cpCLI(char arg[256]){
+	char cmdarg[300];
+	strcpy(cmdarg, "cp ");
+	strcat(cmdarg, arg);
+	system(cmdarg);
+}
+
+void find(char arg[256]){
+	char cmdarg[300];
+	strcpy(cmdarg, "fgrep -o ");
+	strcat(cmdarg, arg);
+	strcat(cmdarg, " | wc -l");
+	system(cmdarg);
+}
+
+void run(char arg[256]){
+	char cmdarg[300];
+	strcpy(cmdarg, "./");
+	strcat(cmdarg, arg);
+	system(cmdarg);
+}
+
+void halt(char arg[256]){
+	char cmdarg[300];
+	strcpy(cmdarg, "pkill ");
+	strcat(cmdarg, arg);
+	system(cmdarg);
 }

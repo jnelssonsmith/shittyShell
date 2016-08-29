@@ -1,10 +1,12 @@
-name
+help
 
 NAME:
-    name - short description
+    help - display the user manual, or information about a specific cmd
 
 SYNOPSIS:
-    name <args>
+    help <OPTIONAL: cmd>
 
 DESCRIPTION:
-    full description
+    If given no argument, help will display the user manual in full, otherwise
+    if given a command as an argument it will display the manual entry for that
+    command.

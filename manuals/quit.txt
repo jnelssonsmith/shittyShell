@@ -1,10 +1,10 @@
-name
+quit
 
 NAME:
-    name - short description
+    quit - short description
 
 SYNOPSIS:
-    name <args>
+    quit [NO ARGS]
 
 DESCRIPTION:
-    full description
+    quit the CLI program and return to the external environment process

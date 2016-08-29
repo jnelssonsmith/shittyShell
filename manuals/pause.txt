@@ -1,10 +1,11 @@
-name
+pause
 
 NAME:
-    name - short description
+    pause - pause execution of program until Enter key is pressed
 
 SYNOPSIS:
-    name <args>
+    pause [NO ARGS]
 
 DESCRIPTION:
-    full description
+    pause the execution of the shell indefinitely, to resume use
+    press enter.
