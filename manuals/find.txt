@@ -1,10 +1,12 @@
-name
+find
 
 NAME:
-    name - short description
+    find - display the number of occurrences of a character
+    in a file
 
 SYNOPSIS:
-    name <args>
+    find <char> <file>
 
 DESCRIPTION:
-    full description
+    Will find the number of occurrences of character <char> in file
+    <file>

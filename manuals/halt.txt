@@ -1,10 +1,12 @@
-name
+halt
 
 NAME:
-    name - short description
+    halt - stop executing a program
 
 SYNOPSIS:
-    name <args>
+    halt <programName>
 
 DESCRIPTION:
-    full description
+    halt (Stop executing) the process with name <programName>,
+    note that you cannot use halt to stop this shell program, you need
+    to use quit for that.

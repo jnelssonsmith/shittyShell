@@ -5,10 +5,11 @@ DONE:
 - pause
 - echo <comment>
 - cd <dir>
------------------------
-IN PROGRESS:
 - help
 - find
+-----------------------
+IN PROGRESS:
+
 
 -----------------------
 BACKLOG:
@@ -22,3 +23,6 @@ THINK ABOUT:
 - need to clean up code
 - need to make test case group
 - probs best just to use regular expressions to ensure correctness?
+- need to change help so functionality is more similar to less/more, so that you can
+scroll through long pages?
+- add regex for single arg/null arg matching

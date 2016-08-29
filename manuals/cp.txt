@@ -1,10 +1,13 @@
-name
+cp
 
 NAME:
-    name - short description
+    cp - copy contents of an existing file with name <ofile> to new file
+    <nfile>
 
 SYNOPSIS:
-    name <args>
+    cp <nFilePath> <oFilePath>
 
 DESCRIPTION:
-    full description
+    cp will copy the contents of the file specified by <oFilePath> into
+    the file specified by <nFilePath>. Note that if <nFilePath> specifies a file
+    that doesn't exist, it will create a new file by that name. 

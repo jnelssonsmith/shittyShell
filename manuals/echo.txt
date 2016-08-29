@@ -7,5 +7,6 @@ SYNOPSIS:
     echo <comment>
 
 DESCRIPTION:
-    cd will change into the directory given by <directory>, if no argument is given
-    it will change into the root directory of the system
+    echo will print out the <comment> message to the terminal screen,
+    the message must be enclosed by double quotes to be evaluated, if you wish
+    to use quotes in your comment then use single quotes or escaped quotes (/")
