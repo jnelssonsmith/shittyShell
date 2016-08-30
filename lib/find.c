@@ -1,3 +1,10 @@
+/*
+START DATE: 25/08/16
+LAST MODIFIED: 30/08/16
+ARGS:
+DESCRIPTION:
+*/
+
 #include <stdio.h>
 #include <string.h>
 #include "validation.c"
@@ -14,6 +21,4 @@ void find(char arg[256]){
 	} else {
 		printf("Invalid use of find\nUsage: find <char> <file>\n");
 	}
-
-
 }
