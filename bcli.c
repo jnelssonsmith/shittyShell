@@ -2,7 +2,7 @@
 NAME: Joshua Nelsson-Smith
 STUDENT ID: 25954113
 START DATE: 23/08/16
-LAST MODIFIED: 29/08/16
+LAST MODIFIED: 30/08/16
 DESCRIPTION: This program serves as a very basic command line interpreter
 ...
 
@@ -14,8 +14,7 @@ main clarifies the functions are being passed valid data,
 #include <string.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include <regex.h>
-#include <errno.h>
+#include "lib/getArgs.c"
 #include "lib/cd.c"
 #include "lib/clear.c"
 #include "lib/cp.c"
@@ -28,7 +27,7 @@ main clarifies the functions are being passed valid data,
 #include "lib/pause.c"
 #include "lib/quit.c"
 #include "lib/run.c"
-#include "lib/validation.c"
+
 
 int main(void){
 
@@ -39,13 +38,8 @@ int main(void){
 	char* token;
 	char* string;
 	char* tofree;
-	int nullArgReti;
-	int oneArgReti;
-	int twoArgReti;
-	int echoReti;
 	char originalPath[1024];
 	char homePath[256];
-
 
 	getcwd(originalPath, sizeof(originalPath));
 	strcpy(homePath, getenv("HOME"));
@@ -74,100 +68,43 @@ int main(void){
 		//printf("Command: %s\n", cmd);
 		//printf("Arg: %s\n", arg);
 
-		int nullArgReti = validateNoArgs(arg);
-		int oneArgReti = validateOneArg(arg);
-		int twoArgReti = validateTwoArgs(arg);
-		int echoReti = validateQuoteArg(arg);
 
 
 		if (strcmp(cmd, "quit") == 0){ //cmd is stored with newline included
-			if(!nullArgReti){
-				quit();
-			} else {
-				printf("Invalid use of quit\nUsage: quit [no arguments]\n");
-			}
-
+			quit(arg);
 
 		} else if (strcmp(cmd, "clear") == 0){
-			if(!nullArgReti){
-				clear();
-			} else {
-				printf("Invalid use of clear\nUsage: clear [no arguments]\n");
-			}
+			clear(arg);
 
 		} else if (strcmp(cmd, "pause") == 0){
-			if(!nullArgReti){
-				pauseCLI(input); //have to use pauseCLI as method name since pause is taken
-			} else {
-				printf("Invalid use of pause\nUsage: pause [no arguments]\n");
-			}
+			pauseCLI(arg, input); //have to use pauseCLI as method name since pause is taken
 
 		} else if (strcmp(cmd, "echo") == 0){
-			if (!echoReti){
-				echo(arg);
-			} else {
-				printf("Invalid use of echo\nUsage: echo \"<comment>\"\n");
-			}
+			echo(arg);
 
 		} else if (strcmp(cmd, "dir") == 0) {
-			if (!oneArgReti || !nullArgReti){
-				dir(arg);
-			} else {
-				printf("Invalid use of dir\nUsage: dir <OPTIONAL: directory>\n");
-			}
-
+			dir(arg);
 
 		} else if (strcmp(cmd, "cd") == 0) {
-			if (!oneArgReti){
-				cd(arg);
-			} else if (!nullArgReti){
-				cd(homePath);
-			} else {
-				printf("Invalid use of cd\nUsage: cd <OPTIONAL: directory>\n");
-			}
+			cd(arg, homePath);
 
 		} else if (strcmp(cmd, "help") == 0){
-			if (!oneArgReti || !nullArgReti){
-				help(arg, originalPath);
-			} else {
-				printf("Invalid use of help\nUsage: help <OPTIONAL: command>\n");
-			}
-
+			help(arg, originalPath);
 
 		} else if (strcmp(cmd, "new") == 0){
-			if (!oneArgReti){
-				new(arg);
-			} else {
-				printf("Invalid use of new\nUsage: new <file>\n");
-			}
+			new(arg);
 
 		} else if (strcmp(cmd, "cp") == 0){
-			if (!twoArgReti){
-				cpCLI(arg);
-			} else {
-				printf("Invalid use of cp\nUsage: cp <old> <new>\n");
-			}
+			cpCLI(arg);
 
 		} else if (strcmp(cmd, "find") == 0){
-			if (!twoArgReti){
-				find(arg);
-			} else {
-				printf("Invalid use of find\nUsage: find <char> <file>\n");
-			}
+			find(arg);
 
 		} else if (strcmp(cmd, "run") == 0){
-			if (!oneArgReti){
-				run(arg);
-			} else {
-				printf("Invalid use of run\nUsage: run <program>\n");
-			}
+			run(arg);
 
 		} else if (strcmp(cmd, "halt") == 0){
-			if (!oneArgReti){
-				halt(arg);
-			} else {
-				printf("Invalid use of halt\nUsage: halt <program>\n");
-			}
+			halt(arg);
 
 		} else {
 			printf("Command: [%s] is not recognized\nType \"help\" for user manual\n", cmd);
@@ -175,6 +112,5 @@ int main(void){
 	} while(1);
 
     return 0; //never actually going to reach so idunno if needed...
-
 
 }

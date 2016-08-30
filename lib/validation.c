@@ -1,3 +1,6 @@
+#ifndef _VALIDATION_C_
+#define _VALIDATION_C_
+
 #include <regex.h>
 #include <stdio.h>
 #include <string.h>
@@ -52,3 +55,5 @@ int validateQuoteArg(char arg[256]){
         return retiQuote;
     }
 }
+
+#endif

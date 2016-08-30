@@ -1,7 +1,14 @@
 #include <stdio.h>
 #include <string.h>
+#include "validation.c"
 
-void pauseCLI(char input[256]){
-	printf("Press enter to continue...");
-	fgets(input, 256, stdin);
+void pauseCLI(char arg[256], char input[256]){
+	int nullArgReti = validateNoArgs(arg);
+	if(!nullArgReti){
+		printf("Press enter to continue...");
+		fgets(input, 256, stdin);
+	} else {
+		printf("Invalid use of pause\nUsage: pause [no arguments]\n");
+	}
+
 }
