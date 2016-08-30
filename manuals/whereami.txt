@@ -1,0 +1,10 @@
+whereami
+
+NAME:
+    whereami - show current working directory path
+
+SYNOPSIS:
+    whereami [NO ARGS]
+
+DESCRIPTION:
+    whereami will show the path from root to the current working directory

@@ -4,9 +4,9 @@
 #include <unistd.h>
 #include "validation.c"
 
-void cd(char arg[256], char homePath[256]){
+void cd(char arg[256]){
 	int cdresult;
-
+	char homePath[256];
 	int nullArgReti = validateNoArgs(arg);
 	int oneArgReti = validateOneArg(arg);
 
@@ -16,6 +16,7 @@ void cd(char arg[256], char homePath[256]){
 			printf("Invalid path or directory\n");
 		}
 	} else if (!nullArgReti){
+		strcpy(homePath, getenv("HOME"));
 		cdresult = chdir(homePath);
 		if(cdresult){
 			printf("Invalid path or directory\n");

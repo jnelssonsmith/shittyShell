@@ -19,6 +19,7 @@ DESCRIPTION: This program serves as a very basic command line interpreter
 #include "lib/help.c"
 #include "lib/pause.c"
 #include "lib/quit.c"
+#include "lib/whereami.c"
 
 int main(void){
 
@@ -30,7 +31,7 @@ int main(void){
 	char* string;
 	char* tofree;
 	char originalPath[1024];
-	char homePath[256];
+	//char homePath[256];
 
 	/* get the current working directory path, this is necessary due to our
 	implementation of help, see the lib/help.c file for more information */
@@ -38,7 +39,7 @@ int main(void){
 
 	/* we save the home path so we can access it for the purposes of cd,
 	see the lib/cd.c file for more information */
-	strcpy(homePath, getenv("HOME"));
+	//strcpy(homePath, getenv("HOME"));
 
 	/* The following loop serves as an infinite loop until the user types quit,
 	the loop reads in user input and then splits the user input into a cmd string
@@ -84,10 +85,13 @@ int main(void){
 			dir(arg);
 
 		} else if (strcmp(cmd, "cd") == 0) {
-			cd(arg, homePath);
+			cd(arg);
 
 		} else if (strcmp(cmd, "help") == 0){
 			help(arg, originalPath);
+
+		} else if(strcmp(cmd, "whereami") == 0){
+			whereami(arg);
 
 		} else {
 			printf("command: [%s] is not recognized\ntype \"help\" for user manual\n", cmd);
