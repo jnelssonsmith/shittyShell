@@ -1,13 +1,10 @@
 cp
 
 NAME:
-    cp - copy contents of an existing file with name <ofile> to new file
-    <nfile>
+    cp - copy contents of an existing file to a new file
 
 SYNOPSIS:
-    cp <nFilePath> <oFilePath>
+    cp <oFilePath> <nFilePath>
 
 DESCRIPTION:
-    cp will copy the contents of the file specified by <oFilePath> into
-    the file specified by <nFilePath>. Note that if <nFilePath> specifies a file
-    that doesn't exist, it will create a new file by that name. 
+    cp will copy the contents of the file specified by <oFilePath> into the file specified by <nFilePath>. Note that if <nFilePath> specifies a file that doesn't exist, it will create a new file by that name

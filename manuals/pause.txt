@@ -1,11 +1,10 @@
 pause
 
 NAME:
-    pause - pause execution of program until Enter key is pressed
+    pause - pause execution of program until enter key is pressed
 
 SYNOPSIS:
     pause [NO ARGS]
 
 DESCRIPTION:
-    pause the execution of the shell indefinitely, to resume use
-    press enter.
+    pause the execution of the shell indefinitely, to resume use, press enter.

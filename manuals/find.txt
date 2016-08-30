@@ -1,12 +1,10 @@
 find
 
 NAME:
-    find - display the number of occurrences of a character
-    in a file
+    find - display the number of occurrences of a character in a file
 
 SYNOPSIS:
     find <char> <file>
 
 DESCRIPTION:
-    Will find the number of occurrences of character <char> in file
-    <file>
+    Will find the number of occurrences of character <char> in file <file>

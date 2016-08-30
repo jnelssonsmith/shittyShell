@@ -7,6 +7,4 @@ SYNOPSIS:
     help <OPTIONAL: cmd>
 
 DESCRIPTION:
-    If given no argument, help will display the user manual in full, otherwise
-    if given a command as an argument it will display the manual entry for that
-    command.
+    If given no argument, help will display the user manual in full, otherwise if given a command as an argument it will display the manual entry for that command.

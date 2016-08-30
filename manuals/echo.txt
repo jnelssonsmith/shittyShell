@@ -4,9 +4,7 @@ NAME:
     echo - print out a message to terminal
 
 SYNOPSIS:
-    echo <comment>
+    echo "<comment>"
 
 DESCRIPTION:
-    echo will print out the <comment> message to the terminal screen,
-    the message must be enclosed by double quotes to be evaluated, if you wish
-    to use quotes in your comment then use single quotes or escaped quotes (/")
+    echo will print out the <comment> message to the terminal screen, the message must be enclosed by double quotes to be evaluated, if you wish to use quotes in your comment then use single quotes or escaped quotes (/")

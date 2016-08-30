@@ -1,7 +1,7 @@
 quit
 
 NAME:
-    quit - short description
+    quit - quit the program
 
 SYNOPSIS:
     quit [NO ARGS]

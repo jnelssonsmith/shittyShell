@@ -7,6 +7,4 @@ SYNOPSIS:
     halt <programName>
 
 DESCRIPTION:
-    halt (Stop executing) the process with name <programName>,
-    note that you cannot use halt to stop this shell program, you need
-    to use quit for that.
+    halt (stop executing) the process with name <programName>
