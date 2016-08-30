@@ -3,9 +3,14 @@ NAME: Joshua Nelsson-Smith
 STUDENT ID: 25954113
 START DATE: 23/08/16
 LAST MODIFIED: 30/08/16
-DESCRIPTION: This program serves as a very basic command line interpreter
-...
+DESCRIPTION: A basic CLI implementation in c. The program makes use of
+c wrappers to system calls to achieve most functionality. This program includes
+some common features that most CLI users would need such as directory navigation
+and file creation. However for more extensive features it is suggested to use
+the advanced version of the CLI.
 
+Written for the purpose of Monash University FIT2070 - Operating Systems
+Assignment 1 2016.
 */
 
 #include <stdio.h>
