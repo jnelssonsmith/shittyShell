@@ -2,13 +2,13 @@
 NAME: Joshua Nelsson-Smith
 STUDENT ID: 25954113
 START DATE: 23/08/16
-LAST MODIFIED: 30/08/16
+LAST MODIFIED: 31/08/16
 DESCRIPTION: An advanced CLI implementation in c. The program makes use of
 c wrappers to system calls to achieve most functionality. This program has more
 advanced features than the basic CLI such as process launching and killing.
 
 Written for the purpose of Monash University FIT2070 - Operating Systems
-Assignment 1 2016. 
+Assignment 1 2016.
 */
 
 #include <stdio.h>
@@ -39,15 +39,10 @@ int main(void){
 	char* string;
 	char* tofree;
 	char originalPath[1024];
-	//char homePath[256];
 
 	/* get the current working directory path, this is necessary due to our
 	implementation of help, see the lib/help.c file for more information */
 	getcwd(originalPath, sizeof(originalPath)); //need to keep original path saved so we can reference user manuals
-
-	/* we save the home path so we can access it for the purposes of cd,
-	see the lib/cd.c file for more information */
-	//strcpy(homePath, getenv("HOME")); //need to have the home path saved to feed to the cd function
 
 	/* The following loop serves as an infinite loop until the user types quit,
 	the loop reads in user input and then splits the user input into a cmd string

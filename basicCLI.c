@@ -2,7 +2,7 @@
 NAME: Joshua Nelsson-Smith
 STUDENT ID: 25954113
 START DATE: 23/08/16
-LAST MODIFIED: 30/08/16
+LAST MODIFIED: 31/08/16
 DESCRIPTION: A basic CLI implementation in c. The program makes use of
 c wrappers to system calls to achieve most functionality. This program includes
 some common features that most CLI users would need such as directory navigation
@@ -36,15 +36,10 @@ int main(void){
 	char* string;
 	char* tofree;
 	char originalPath[1024];
-	//char homePath[256];
 
 	/* get the current working directory path, this is necessary due to our
 	implementation of help, see the lib/help.c file for more information */
 	getcwd(originalPath, sizeof(originalPath));
-
-	/* we save the home path so we can access it for the purposes of cd,
-	see the lib/cd.c file for more information */
-	//strcpy(homePath, getenv("HOME"));
 
 	/* The following loop serves as an infinite loop until the user types quit,
 	the loop reads in user input and then splits the user input into a cmd string
@@ -57,7 +52,7 @@ int main(void){
 		printf("$ ");
 		fgets(input, 256, stdin); //use fgets to help prevent buffer overflow
 		/* Note that fgets will also read in the \n from the user pressing enter
-		so need to strip trailing newline*/
+		so need to strip trailing newline */
 		input[strcspn(input, "\n")] = 0; //strip newline, more complicated than strtok but threadsafe
 		string = strdup(input);
 
