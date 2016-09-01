@@ -71,8 +71,13 @@ quotes so the user can still use quotes in their string as needed */
 int validateQuoteArg(char arg[256]){
     regex_t quoteRegex;
     int retiQuote;
-    // possible sub regex \"(?:[^\"\\]|\\.)*\" need to escape
-    // original regex  ^\"((\"*)(.*)(\"*))*\"$
+    /* possible sub regex \"(?:[^\"\\]|\\.)*\" need to escape
+    original regex  ^\"((\"*)(.*)(\"*))*\"$
+    While not breaking, there is an issue where a command using a " and an
+    escaped quote  \" are used with no final quote.
+    Such as $ echo "Josh\"  actual echo in unix systems handles this by moving
+    to an extended prompt, however this functionality seems too advanced for this
+    application, so for now the bug will be left */
     retiQuote = regcomp(&quoteRegex, "^\"((\"*)(.*)(\"*))*\"$", REG_EXTENDED);
 
     if (retiQuote){
