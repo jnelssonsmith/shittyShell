@@ -12,12 +12,21 @@ DESCRIPTION:
 void halt(char arg[256]){
 	char cmdarg[300];
 	int oneArgReti = validateOneArg(arg);
+
+	if(!oneArgReti){
+		strcpy(cmdarg, "pkill ");
+		strcat(cmdarg, arg);
+		system(cmdarg);
+	} else {
+		printf("Invalid use of halt\nUsage: halt <program>\n");
+	}
+/*
 	int pid;
 
 	pid = fork();
 	if (pid == 0){
 		if (!oneArgReti){
-			execlp("/bin/pkill", arg, NULL);
+			execlp("/bin/pkill", "9", arg, NULL);
 		} else {
 			printf("Invalid use of halt\nUsage: halt <program>\n");
 		}
@@ -25,6 +34,7 @@ void halt(char arg[256]){
 	} else {
 		wait(NULL);
 	}
+	*/
 
 
 

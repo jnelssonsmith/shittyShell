@@ -14,6 +14,22 @@ void help(char arg[256], char originalPath[1024]){
 	char cmdarg[1536];
 	int nullArgReti = validateNoArgs(arg);
 	int oneArgReti = validateOneArg(arg);
+
+	if (!oneArgReti || !nullArgReti){
+		strcpy(cmdarg, "less ");
+		strcat(cmdarg, originalPath);
+		strcat(cmdarg, "/manuals/");
+		if (!oneArgReti){
+			strcat(cmdarg, arg);
+			strcat(cmdarg, ".txt");
+		} else if (!nullArgReti) {
+			strcat(cmdarg, "userManual.txt");
+		}
+		system(cmdarg);
+	} else {
+		printf("Invalid use of help\nUsage: help <OPTIONAL: command>\n");
+	}
+/*
 	int pid;
 
 	printf("%s\n", originalPath);
@@ -31,7 +47,7 @@ void help(char arg[256], char originalPath[1024]){
 				strcat(cmdarg, "userManual.txt");
 			}
 			printf("%s\n", cmdarg );
-			execlp("/bin/less", "less", "manuals/cd.txt", NULL);
+			execlp("/bin/more", "/bin/more", "manuals/cd.txt", NULL);
 		} else {
 			printf("Invalid use of help\nUsage: help <OPTIONAL: command>\n");
 		}
@@ -40,4 +56,6 @@ void help(char arg[256], char originalPath[1024]){
 		printf("I AM PARENT");
 		wait(NULL);
 	}
+
+*/
 }

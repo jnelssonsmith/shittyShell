@@ -13,12 +13,13 @@ DESCRIPTION:
 void echo(char arg[256]){
 	char cmdarg[300];
 	int echoReti = validateQuoteArg(arg);
+/*
 	int pid;
-	//echo broken currently, no validating properly
+
 	pid = fork();
-	if(pid == 0){
-		if(!echoReti){
-			execlp("/bin/echo", "echo", arg, NULL);
+	if (pid == 0){
+		if (!echoReti){
+			execlp("/bin/echo", "echo", "hello world", NULL);
 		} else {
 			printf("Invalid use of echo\nUsage: echo \"<comment>\"\n");
 		}
@@ -26,4 +27,15 @@ void echo(char arg[256]){
 	} else {
 		wait(NULL);
 	}
+
+*/
+	if (!echoReti){
+		strcpy(cmdarg, "echo ");
+		strcat(cmdarg, arg);
+		system(cmdarg);
+
+	} else {
+		printf("Invalid use of echo\nUsage: echo \"<comment>\"\n");
+	}
+
 }
