@@ -12,13 +12,21 @@ DESCRIPTION:
 void cpCLI(char arg[256]){
 	char cmdarg[300];
 	int twoArgReti = validateTwoArgs(arg);
+	int pid;
+	char arg1[256];
+	char arg2[256];
 
-	if (!twoArgReti){
-		strcpy(cmdarg, "cp ");
-		strcat(cmdarg, arg);
-		system(cmdarg);
+	pid = fork();
+	if (pid == 0){
+		if (!twoArgReti){
+			strcpy(arg1, strsep(&arg, " "));
+			strcpy(arg2, arg);
+			execlp("/bin/cp", "cp", arg1, arg2, NULL);
+		} else {
+			printf("Invalid use of cp\nUsage: cp <old> <new>\n");
+		}
+		exit(0);
 	} else {
-		printf("Invalid use of cp\nUsage: cp <old> <new>\n");
+		wait(NULL);
 	}
-
 }

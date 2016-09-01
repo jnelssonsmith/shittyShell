@@ -7,16 +7,25 @@ DESCRIPTION:
 
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
+#include <stdlib.h>
 #include "validation.c"
 
 void new(char arg[256]){
 	char cmdarg[300];
 	int oneArgReti = validateOneArg(arg);
+	int pid;
+	char prePath[1024];
+	FILE *newFile;
 
 	if (!oneArgReti){
-		strcpy(cmdarg, "touch ");
+		getcwd(prePath, sizeof(prePath));
+		strcat(cmdarg, prePath);
+		strcat(cmdarg, "/");
 		strcat(cmdarg, arg);
-		system(cmdarg);
+		newFile = fopen(cmdarg, "w");
+		fclose(newFile);
+
 	} else {
 		printf("Invalid use of new\nUsage: new <file>\n");
 	}

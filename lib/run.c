@@ -7,17 +7,30 @@ DESCRIPTION:
 
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 #include "validation.c"
 
 void run(char arg[256]){
-	char cmdarg[300];
+	char fullPath[1280];
 	int oneArgReti = validateOneArg(arg);
+	int pid;
+	char prePath[1024];
 
-	if (!oneArgReti){
-		strcpy(cmdarg, "./");
-		strcat(cmdarg, arg);
-		system(cmdarg);
+	pid = fork();
+	if (pid == 0){
+		if (!oneArgReti){
+			getcwd(prePath, sizeof(prePath));
+			strcpy(fullPath, prePath);
+			strcat(fullPath, "/");
+			strcat(fullPath, arg);
+			execlp(fullPath, NULL);
+		} else {
+			printf("Invalid use of run\nUsage: run <program>\n");
+		}
+		exit(0);
 	} else {
-		printf("Invalid use of run\nUsage: run <program>\n");
+		wait(NULL);
 	}
+
+
 }

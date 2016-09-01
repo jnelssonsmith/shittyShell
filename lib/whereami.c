@@ -11,15 +11,23 @@ the unix command "pwd" to print out the path to the working directory.
 
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 #include "validation.c"
 
 void whereami(char arg[256]){
 	char cmdarg[300];
 	int nullArgReti = validateNoArgs(arg);
+	int pid;
 
-	if (!nullArgReti){
-		system("pwd");
+	pid = fork();
+	if(pid == 0){
+		if (!nullArgReti) {
+			execlp("/bin/pwd", "pwd", NULL);
+		} else {
+			printf("Invalid use of whereami\nUsage: whereami [NO ARGS]\n");
+		}
+		exit(0);
 	} else {
-		printf("Invalid use of whereami\nUsage: whereami [NO ARGS]\n");
+		wait(NULL);
 	}
 }

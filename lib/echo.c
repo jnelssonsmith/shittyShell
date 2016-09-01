@@ -7,18 +7,23 @@ DESCRIPTION:
 
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 #include "validation.c"
 
 void echo(char arg[256]){
 	char cmdarg[300];
 	int echoReti = validateQuoteArg(arg);
-
-	if (!echoReti){
-		strcpy(cmdarg, "echo ");
-		strcat(cmdarg, arg);
-		system(cmdarg);
+	int pid;
+	//echo broken currently, no validating properly
+	pid = fork();
+	if(pid == 0){
+		if(!echoReti){
+			execlp("/bin/echo", "echo", arg, NULL);
+		} else {
+			printf("Invalid use of echo\nUsage: echo \"<comment>\"\n");
+		}
+		exit(0);
 	} else {
-		printf("Invalid use of echo\nUsage: echo \"<comment>\"\n");
+		wait(NULL);
 	}
-
 }

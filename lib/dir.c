@@ -13,13 +13,19 @@ void dir(char arg[256]){
 	char cmdarg[300];
 	int nullArgReti = validateNoArgs(arg);
 	int oneArgReti = validateOneArg(arg);
+	int pid;
 
-	if (!oneArgReti || !nullArgReti){
-		strcpy(cmdarg, "ls ");
-		strcat(cmdarg, arg);
-		system(cmdarg);
+	pid = fork();
+	if(pid == 0){
+		if (!oneArgReti){
+			execlp("/bin/ls", "ls", arg, NULL);
+		} else if (!nullArgReti) {
+			execlp("/bin/ls", "ls", NULL);
+		} else {
+			printf("Invalid use of dir\nUsage: dir <OPTIONAL: directory>\n");
+		}
+		exit(0);
 	} else {
-		printf("Invalid use of dir\nUsage: dir <OPTIONAL: directory>\n");
+		wait(NULL);
 	}
-
 }

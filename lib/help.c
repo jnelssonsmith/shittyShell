@@ -7,26 +7,37 @@ DESCRIPTION:
 
 #include <stdio.h>
 #include <string.h>
+#include <unistd.h>
 #include "validation.c"
 
 void help(char arg[256], char originalPath[1024]){
-	char cmdarg[1280];
+	char cmdarg[1536];
 	int nullArgReti = validateNoArgs(arg);
 	int oneArgReti = validateOneArg(arg);
+	int pid;
 
-	strcpy(cmdarg, "more ");
-	strcat(cmdarg, originalPath);
-	strcat(cmdarg, "/manuals/");
-	if (!oneArgReti){
-		strcat(cmdarg, arg);
-		strcat(cmdarg, ".txt");
-		system(cmdarg);
-	} else if (!nullArgReti) {
-		strcat(cmdarg, "userManual.txt");
-		system(cmdarg);
+	printf("%s\n", originalPath);
+	pid = fork();
+	if(pid == 0){
+		if (!oneArgReti || !nullArgReti){
+			strcpy(cmdarg, originalPath);
+			strcat(cmdarg, "/manuals/");
+			printf("%s\n", cmdarg);
+			if (!oneArgReti){
+				strcat(cmdarg, arg);
+				strcat(cmdarg, ".txt");
+				printf("Inside one arg valid %s\n", cmdarg);
+			} else if (!nullArgReti) {
+				strcat(cmdarg, "userManual.txt");
+			}
+			printf("%s\n", cmdarg );
+			execlp("/bin/less", "less", "manuals/cd.txt", NULL);
+		} else {
+			printf("Invalid use of help\nUsage: help <OPTIONAL: command>\n");
+		}
+		exit(0);
 	} else {
-		printf("Invalid use of help\nUsage: help <OPTIONAL: command>\n");
+		printf("I AM PARENT");
+		wait(NULL);
 	}
-
-
 }
