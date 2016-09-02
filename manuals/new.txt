@@ -1,4 +1,4 @@
-new
+new - ADVANCED ONLY
 
 NAME:
     new - create a file

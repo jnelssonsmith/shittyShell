@@ -1,0 +1,10 @@
+dir - BASIC/ADVANCED
+
+NAME:
+    dir - list contents of directory
+
+SYNOPSIS:
+    dir <OPTIONAL: directory>
+
+DESCRIPTION:
+    dir will show the contents of a directory given by directory, if no directory is given it will list the 

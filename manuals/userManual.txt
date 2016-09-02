@@ -1,1 +1,25 @@
-This will be the user manual
+Documentation on CLI for FIT2070 Assignment 1
+Josh Nelsson-Smith 02/09/2016
+
+The Basic CLI supports the following commands
+
+clear [NO ARGS] - clear the output screen
+cd <OPTIONAL: DIRECTORY> - change the current working directory
+dir <OPTIONAL: DIRECTORY> - list contents of directory
+echo "<COMMENT>" - print a message to terminal
+help <OPTIONAL: CMD> - display the user manual, or information about a specific cmd
+pause [NO ARGS] - pause execution of program until enter key is pressed
+quit [NO ARGS] - quit the CLI
+whereami [NO ARGS] - show current working directory path
+
+While the Advanced CLI supports additional commands:
+
+new <file> - create a file
+cp <old> <new> - copy contents of an existing file to a new file
+find <char> <file> - display the number of occurrences of a character in a file
+run <program> - execute an executable program
+halt <program> - stop executing a program
+
+------------------------------------------
+To find the usage of a command in more detail, type "help <cmdname>",
+to exit this prompt press "q".

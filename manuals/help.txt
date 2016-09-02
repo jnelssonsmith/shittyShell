@@ -1,4 +1,4 @@
-help
+help - BASIC/ADVANCED
 
 NAME:
     help - display the user manual, or information about a specific cmd

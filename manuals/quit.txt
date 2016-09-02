@@ -1,7 +1,7 @@
-quit
+quit - BASIC/ADVANCED
 
 NAME:
-    quit - quit the program
+    quit - quit the CLI
 
 SYNOPSIS:
     quit [NO ARGS]

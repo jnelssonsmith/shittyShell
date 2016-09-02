@@ -1,4 +1,4 @@
-halt
+halt - ADVANCED ONLY
 
 NAME:
     halt - stop executing a program

@@ -1,7 +1,7 @@
-cd
+cd - BASIC/ADVANCED
 
 NAME:
-    cd - change the directory the user is currently in
+    cd - change the current working directory
 
 SYNOPSIS:
     cd <OPTIONAL: directory>

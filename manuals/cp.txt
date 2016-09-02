@@ -1,4 +1,4 @@
-cp
+cp - ADVANCED ONLY
 
 NAME:
     cp - copy contents of an existing file to a new file

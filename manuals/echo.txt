@@ -1,7 +1,7 @@
-echo
+echo - BASIC/ADVANCED
 
 NAME:
-    echo - print out a message to terminal
+    echo - print a message to terminal
 
 SYNOPSIS:
     echo "<comment>"

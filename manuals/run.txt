@@ -1,4 +1,4 @@
-run
+run - BASIC/ADVANCED
 
 NAME:
     run - execute an executable program

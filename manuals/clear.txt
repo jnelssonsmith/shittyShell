@@ -1,4 +1,4 @@
-clear
+clear - BASIC/ADVANCED
 
 NAME:
     clear - clear the output screen

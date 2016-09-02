@@ -1,4 +1,4 @@
-whereami
+whereami - BASIC/ADVANCED
 
 NAME:
     whereami - show current working directory path
