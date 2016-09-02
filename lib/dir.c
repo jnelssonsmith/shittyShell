@@ -13,10 +13,10 @@ void dir(char arg[256]){
 	char cmdarg[300];
 	int nullArgReti = validateNoArgs(arg);
 	int oneArgReti = validateOneArg(arg);
-	int pid;
+	int pid_t;
 
-	pid = fork();
-	if(pid == 0){
+	pid_t = fork();
+	if(pid_t == 0){
 		if (!oneArgReti){
 			execlp("/bin/ls", "ls", arg, NULL);
 		} else if (!nullArgReti) {

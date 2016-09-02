@@ -25,8 +25,8 @@ void new(char arg[256]){
 			printf("Invalid use of new\nUsage: new <file>\n");
 		}
 		exit(0);
-	} else if (pid_t > 0){
-
+	} else if (pid_t < 0){
+		printf("Error with process creation for new");
 	} else {
 		wait(NULL);
 	}
