@@ -1,6 +1,6 @@
 /*
 START DATE: 29/08/16
-LAST MODIFIED: 31/08/16
+LAST MODIFIED: 02/09/16
 ARGS: arg - the argument string passed from the main program to validate against
 DESCRIPTION: This function was not required in the assignment spec but using
 the shell without an explicit command to see the pwd was very frustrating.

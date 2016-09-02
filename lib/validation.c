@@ -1,6 +1,6 @@
 /*
 START DATE: 25/08/16
-LAST MODIFIED: 31/08/16
+LAST MODIFIED: 02/09/16
 ARGS: arg - the argument string passed from the main program to validate against
 DESCRIPTION: A group of validation functions for the purposes of validating the
 arguments string passed to each of the terminal functions. The validation works

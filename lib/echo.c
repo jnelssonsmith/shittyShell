@@ -1,8 +1,8 @@
 /*
 START DATE: 23/08/16
-LAST MODIFIED: 31/08/16
+LAST MODIFIED: 02/09/16
 ARGS: arg - the argument string passed from the main program to validate against
-DESCRIPTION:
+DESCRIPTION: Echo feeds the
 */
 
 #include <stdio.h>
@@ -19,7 +19,7 @@ void echo(char arg[256]){
 	pid = fork();
 	if (pid == 0){
 		if (!echoReti){
-			execlp("/bin/echo", "echo", "hello world", NULL);
+			execlp("usr/bin/echo", "echo", "hello world", NULL);
 		} else {
 			printf("Invalid use of echo\nUsage: echo \"<comment>\"\n");
 		}

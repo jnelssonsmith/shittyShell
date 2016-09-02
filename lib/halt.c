@@ -1,8 +1,8 @@
 /*
 START DATE: 23/08/16
-LAST MODIFIED: 31/08/16
+LAST MODIFIED: 02/09/16
 ARGS: arg - the argument string passed from the main program to validate against
-DESCRIPTION:
+DESCRIPTION: 
 */
 
 #include <stdio.h>
@@ -26,7 +26,7 @@ void halt(char arg[256]){
 	pid = fork();
 	if (pid == 0){
 		if (!oneArgReti){
-			execlp("/bin/pkill", "9", arg, NULL);
+			execlp("/bin/pkill", arg, NULL);
 		} else {
 			printf("Invalid use of halt\nUsage: halt <program>\n");
 		}

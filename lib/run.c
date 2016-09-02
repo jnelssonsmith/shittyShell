@@ -1,8 +1,9 @@
 /*
 START DATE: 25/08/16
-LAST MODIFIED: 31/08/16
+LAST MODIFIED: 02/09/16
 ARGS: arg - the argument string passed from the main program to validate against
-DESCRIPTION:
+DESCRIPTION: Run uses execlp to execute the file specified by arg, it also makes
+use of the getcwd argument to get the entire path rather than a relative path.
 */
 
 #include <stdio.h>

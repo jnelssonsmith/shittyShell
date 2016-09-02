@@ -1,8 +1,8 @@
 /*
 START DATE: 23/08/16
-LAST MODIFIED: 31/08/16
+LAST MODIFIED: 02/09/16
 ARGS: arg - the argument string passed from the main program to validate against
-DESCRIPTION:
+DESCRIPTION: Uses c file I/O to create new file in cwd with name given by arg
 */
 
 #include <stdio.h>
