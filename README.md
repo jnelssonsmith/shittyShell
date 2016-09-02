@@ -45,12 +45,9 @@ Start by downloading and unzipping the file named `25954113_A1.zip`, once unzipp
 
 2 directories, 32 files
 ```
+The project already includes the two compiled versions of the program `advancedCLI` and `basicCLI`. However to ensure it is compiled correctly for your architecture I recommend re-compiling them beforehand. You can do this one of two ways:
 
-You will notice that there are already 2 compiled programs, ```advancedCLI``` and ```basicCLI```, you can test if these work on your architecture by attempting to run them by navigating to the directory and running them.
-
-However to ensure it is compiled correctly for your architecture I recommend re-compiling them beforehand. You can do this one of two ways:
-
-1. Compile using included script ```compileScript.sh```
+a. Compile using included script ```compileScript.sh```
 ```sh
 $ ./compileScript.sh
 Compiling c program...
@@ -60,7 +57,7 @@ Note - you may need to alter permissions to allow the script to execute via some
 ```sh
 $ chmod 777 compileScript.sh
 ```
-2. Compile the program manually via:
+b. Compile the program manually via:
 ```sh
 $ gcc -o basicCLI basicCLI.c
 $ gcc -o advancedCLI adancedCLI.c
@@ -80,4 +77,4 @@ After launching the program you will be presented with a traditional prompt for 
 $
 ```
 
-You can perform many functions that are available in the terminal you may be familiar with such as changing directory, creating files or dealing with processes. I will now list out the different functions and give examples on their usage.
+You can perform many functions that are available in the terminal you may be familiar with such as changing directory, creating files or dealing with processes. I suggest typing `help` to get started and better understand the commands included in the shell.
