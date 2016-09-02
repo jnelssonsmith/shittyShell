@@ -19,7 +19,7 @@ void echo(char arg[256]){
 	pid = fork();
 	if (pid == 0){
 		if (!echoReti){
-			execlp("usr/bin/echo", "echo", "hello world", NULL);
+			execlp("/bin/echo", "echo", "hello world", NULL);
 		} else {
 			printf("Invalid use of echo\nUsage: echo \"<comment>\"\n");
 		}

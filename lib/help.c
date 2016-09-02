@@ -16,22 +16,6 @@ void help(char arg[256], char originalPath[1024]){
 	char cmdarg[1536];
 	int nullArgReti = validateNoArgs(arg);
 	int oneArgReti = validateOneArg(arg);
-/*
-	if (!oneArgReti || !nullArgReti){
-		strcpy(cmdarg, "less ");
-		strcat(cmdarg, originalPath);
-		strcat(cmdarg, "/manuals/");
-		if (!oneArgReti){
-			strcat(cmdarg, arg);
-			strcat(cmdarg, ".txt");
-		} else if (!nullArgReti) {
-			strcat(cmdarg, "userManual.txt");
-		}
-		system(cmdarg);
-	} else {
-		printf("Invalid use of help\nUsage: help <OPTIONAL: command>\n");
-	}
-*/
 	int pid;
 
 	pid = fork();

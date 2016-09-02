@@ -12,15 +12,19 @@ DESCRIPTION:
 
 
 void clear(char arg[256]){
-	int clearReti;
-	//int pid;
+	int pid_t;
+	int clearReti = validateNoArgs(arg);
 
-	clearReti = validateNoArgs(arg);
-	if(!clearReti){
-		//system("clear");
-		printf("\e[1;1H\e[2J"); //ansi escape code for clear screen
-
+	pid_t = fork();
+	if(pid_t == 0){
+		if(!clearReti){
+			execlp("/usr/bin/clear", "clear", NULL);
+		} else {
+			printf("Invalid use of clear\nUsage: clear [no arguments]\n");
+		}
+		exit(0);
 	} else {
-		printf("Invalid use of clear\nUsage: clear [no arguments]\n");
+		wait(NULL);
 	}
+
 }
