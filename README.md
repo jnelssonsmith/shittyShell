@@ -7,6 +7,7 @@
 Start by downloading and unzipping the file named `25954113_A1.zip`, once unzipped you should see the folder contains the following files:
 ```
 25954113_A1/
+├── README.md
 ├── README.pdf
 ├── advancedCLI
 ├── advancedCLI.c
@@ -32,6 +33,7 @@ Start by downloading and unzipping the file named `25954113_A1.zip`, once unzipp
     ├── cd.txt
     ├── clear.txt
     ├── cp.txt
+    ├── dir.txt
     ├── echo.txt
     ├── find.txt
     ├── halt.txt
@@ -43,9 +45,9 @@ Start by downloading and unzipping the file named `25954113_A1.zip`, once unzipp
     ├── userManual.txt
     └── whereami.txt
 
-2 directories, 32 files
+2 directories, 34 files
 ```
-The project already includes the two compiled versions of the program `advancedCLI` and `basicCLI`. However to ensure it is compiled correctly for your architecture I recommend re-compiling them beforehand. You can do this one of two ways:
+You will see the project consists of the two versions of the CLI, the compile script (`compileScript.sh`) and `lib` and `manuals` folders. `lib` contains the function c files and `manuals` contains all the user manuals for the functions. The project already includes the two compiled versions of the program `advancedCLI` and `basicCLI`. However to ensure it is compiled correctly for your architecture I recommend re-compiling them beforehand. You can do this one of two ways:
 
 a. Compile using included script ```compileScript.sh```
 ```sh
