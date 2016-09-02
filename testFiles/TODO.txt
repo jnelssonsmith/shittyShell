@@ -1,7 +1,0 @@
-- add header comments to the lib files
-- add inline comments to the lib files
-- run full test suite
-- write out usermanual
-- write out readme properly
-- convert readme to pdf
-- check tests on unicomputers
