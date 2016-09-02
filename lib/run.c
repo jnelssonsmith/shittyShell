@@ -13,17 +13,16 @@ specify a complete path to the executable, or execute something in the cwd with
 #include "validation.c"
 
 void run(char arg[256]){
-	char fullPath[1280];
 	int oneArgReti = validateOneArg(arg);
 	int pid_t;
-	char prePath[1024];
 	int returnval;
 
 	pid_t = fork();
 	if (pid_t == 0){
 		if (!oneArgReti){
-			returnval = execlp(arg, NULL);
+			returnval = execlp(arg, NULL); //run the program specified by user
 			if(returnval){
+				// returnval is useful here for if there is an problem
 				printf("That program could not be found\n");
 			}
 		} else {

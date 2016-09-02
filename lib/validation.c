@@ -66,8 +66,7 @@ int validateTwoArgs(char arg[256]){
 /* this function is specifically for the echo function but it could be useful
 for other functions in future. It ensures that the argument string is of the form
 "some comment in here" because we define a comment in the spec as needing to start
-and end with double quotes. The regex also checks for and allows the use of escape
-quotes so the user can still use quotes in their string as needed */
+and end with double quotes. */
 int validateQuoteArg(char arg[256]){
     regex_t quoteRegex;
     int retiQuote;

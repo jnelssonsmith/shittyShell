@@ -2,7 +2,8 @@
 START DATE: 23/08/16
 LAST MODIFIED: 02/09/16
 ARGS: arg - the argument string passed from the main program to validate against
-DESCRIPTION:
+DESCRIPTION: cp lets the user copy the contents from one file to another, if the
+given newfile does not exist, it will create it. 
 */
 
 #include <stdio.h>
