@@ -12,22 +12,24 @@ DESCRIPTION: Uses c file I/O to create new file in cwd with name given by arg
 #include "validation.c"
 
 void new(char arg[256]){
-	char cmdarg[300];
-	int oneArgReti = validateOneArg(arg);
-	int pid;
-	char prePath[1024];
-	FILE *newFile;
 
-	if (!oneArgReti){
-		getcwd(prePath, sizeof(prePath));
-		strcat(cmdarg, prePath);
-		strcat(cmdarg, "/");
-		strcat(cmdarg, arg);
-		newFile = fopen(cmdarg, "w");
-		fclose(newFile);
+	int oneArgReti = validateOneArg(arg);
+	int pid_t;
+
+	pid_t = fork();
+
+	if (pid_t == 0){
+		if (!oneArgReti){
+			execlp("/usr/bin/touch", "touch", arg, NULL);
+		} else {
+			printf("Invalid use of new\nUsage: new <file>\n");
+		}
+		exit(0);
+	} else if (pid_t > 0){
 
 	} else {
-		printf("Invalid use of new\nUsage: new <file>\n");
+		wait(NULL);
 	}
+
 
 }
