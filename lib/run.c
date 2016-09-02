@@ -2,10 +2,9 @@
 START DATE: 25/08/16
 LAST MODIFIED: 02/09/16
 ARGS: arg - the argument string passed from the main program to validate against
-DESCRIPTION: Run uses execlp to execute the file specified by arg, it also makes
-use of the getcwd argument to get the entire path rather than a relative path.
-This means that users can only use relative paths but should not be too frustrating
-as it is much more common than typing full paths from root. 
+DESCRIPTION: Run uses execlp to execute the file specified by arg, the user can
+specify a complete path to the executable, or execute something in the cwd with
+./executable-name
 */
 
 #include <stdio.h>
@@ -23,11 +22,7 @@ void run(char arg[256]){
 	pid_t = fork();
 	if (pid_t == 0){
 		if (!oneArgReti){
-			getcwd(prePath, sizeof(prePath));
-			strcpy(fullPath, prePath);
-			strcat(fullPath, "/");
-			strcat(fullPath, arg);
-			returnval = execlp(fullPath, NULL);
+			returnval = execlp(arg, NULL);
 			if(returnval){
 				printf("That program could not be found\n");
 			}
