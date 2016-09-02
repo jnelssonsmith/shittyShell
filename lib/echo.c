@@ -13,13 +13,16 @@ DESCRIPTION: Echo feeds the
 void echo(char arg[256]){
 	char cmdarg[300];
 	int echoReti = validateQuoteArg(arg);
-/*
 	int pid;
+	char arg1[256];
+	char arg2[256];
 
 	pid = fork();
 	if (pid == 0){
 		if (!echoReti){
-			execlp("/bin/echo", "echo", "hello world", NULL);
+			strsep(&arg, "\"");
+			strcpy(arg2, strsep(&arg, "\""));
+			execlp("/bin/echo", "echo", arg2, NULL);
 		} else {
 			printf("Invalid use of echo\nUsage: echo \"<comment>\"\n");
 		}
@@ -28,7 +31,8 @@ void echo(char arg[256]){
 		wait(NULL);
 	}
 
-*/
+
+/*
 	if (!echoReti){
 		strcpy(cmdarg, "echo ");
 		strcat(cmdarg, arg);
@@ -37,5 +41,5 @@ void echo(char arg[256]){
 	} else {
 		printf("Invalid use of echo\nUsage: echo \"<comment>\"\n");
 	}
-
+*/
 }
