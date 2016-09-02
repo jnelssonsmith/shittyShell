@@ -14,24 +14,28 @@ use of the getcwd argument to get the entire path rather than a relative path.
 void run(char arg[256]){
 	char fullPath[1280];
 	int oneArgReti = validateOneArg(arg);
-	int pid;
+	int pid_t;
 	char prePath[1024];
+	int returnval;
 
-	pid = fork();
-	if (pid == 0){
+	pid_t = fork();
+	if (pid_t == 0){
 		if (!oneArgReti){
 			getcwd(prePath, sizeof(prePath));
 			strcpy(fullPath, prePath);
 			strcat(fullPath, "/");
 			strcat(fullPath, arg);
-			execlp(fullPath, NULL);
+			returnval = execlp(fullPath, NULL);
+			if(returnval){
+				printf("That program could not be found\n");
+			}
 		} else {
 			printf("Invalid use of run\nUsage: run <program>\n");
 		}
 		exit(0);
+	} else if (pid_t < 0){
+		printf("Error creating process");
 	} else {
 		wait(NULL);
 	}
-
-
 }
