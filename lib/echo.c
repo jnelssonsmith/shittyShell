@@ -13,7 +13,7 @@ the quotes striped via strsep
 
 void echo(char arg[256]){
 	int echoReti = validateQuoteArg(arg);
-	int pid;
+	pid_t pid;
 	char arg1[256];
 	char arg2[256];
 

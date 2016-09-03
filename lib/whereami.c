@@ -17,7 +17,7 @@ the unix command "pwd" to print out the path to the working directory.
 void whereami(char arg[256]){
 	char cmdarg[300];
 	int nullArgReti = validateNoArgs(arg);
-	int pid;
+	pid_t pid;
 
 	pid = fork();
 	if(pid == 0){

@@ -14,18 +14,18 @@ DESCRIPTION: Uses touch to create new file given by arg
 void new(char arg[256]){
 
 	int oneArgReti = validateOneArg(arg);
-	int pid_t;
+	pid_t pid;
 
-	pid_t = fork();
+	pid = fork();
 
-	if (pid_t == 0){
+	if (pid == 0){
 		if (!oneArgReti){
 			execlp("/usr/bin/touch", "touch", arg, NULL);
 		} else {
 			printf("Invalid use of new\nUsage: new <file>\n");
 		}
 		exit(0);
-	} else if (pid_t < 0){
+	} else if (pid < 0){
 		printf("Error with process creation for new");
 	} else {
 		wait(NULL);

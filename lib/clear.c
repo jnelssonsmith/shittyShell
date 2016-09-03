@@ -12,11 +12,11 @@ DESCRIPTION: clears the screen
 
 
 void clear(char arg[256]){
-	int pid_t;
+	pid_t pid;
 	int clearReti = validateNoArgs(arg);
 
-	pid_t = fork();
-	if(pid_t == 0){
+	pid = fork();
+	if(pid == 0){
 		if(!clearReti){
 			execlp("/usr/bin/clear", "clear", NULL);
 		} else {

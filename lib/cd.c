@@ -4,7 +4,7 @@ LAST MODIFIED: 02/09/16
 ARGS: arg - the argument string passed from the main program to validate against
 DESCRIPTION: This implementation makes use of the chdir builtin for c seeing as
 a process spawned that uses cd would only have cd changed for that process, then
-clear. 
+clear.
 */
 
 #include <stdio.h>

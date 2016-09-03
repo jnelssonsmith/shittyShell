@@ -19,7 +19,7 @@ void help(char arg[256], char originalPath[1024]){
 	char cmdarg[1536];
 	int nullArgReti = validateNoArgs(arg);
 	int oneArgReti = validateOneArg(arg);
-	int pid;
+	pid_t pid;
 
 	pid = fork();
 	if(pid == 0){

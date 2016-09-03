@@ -14,13 +14,13 @@ specify a complete path to the executable, or execute something in the cwd with
 
 void run(char arg[256]){
 	int oneArgReti = validateOneArg(arg);
-	int pid_t;
+	pid_t pid;
 	int returnval;
 
-	pid_t = fork();
-	if (pid_t == 0){
+	pid = fork();
+	if (pid == 0){
 		if (!oneArgReti){
-			returnval = execlp(arg, NULL); //run the program specified by user
+			returnval = execlp(arg, arg, NULL); //run the program specified by user
 			if(returnval){
 				// returnval is useful here for if there is an problem
 				printf("That program could not be found\n");
@@ -29,7 +29,7 @@ void run(char arg[256]){
 			printf("Invalid use of run\nUsage: run <program>\n");
 		}
 		exit(0);
-	} else if (pid_t < 0){
+	} else if (pid < 0){
 		printf("Error creating process");
 	} else {
 		wait(NULL);
