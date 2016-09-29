@@ -1,6 +1,5 @@
 /*
 NAME: Joshua Nelsson-Smith
-STUDENT ID: 25954113
 START DATE: 23/08/16
 LAST MODIFIED: 31/08/16
 DESCRIPTION: A basic CLI implementation in c. The program makes use of
